@@ -43,3 +43,15 @@ print(">> lpeg.locale")
 local loc = lpeg.locale()
 
 print(loc.space:match(" "))
+print(loc.alnum:match("1"))
+
+print(">> * operator, concatenation")
+
+local s1 = lpeg.P(2)
+local s2 = lpeg.P("test")
+local s3 = lpeg.locale().space 
+local s4 = lpeg.R("az", "AZ")
+
+print((s1 * s2):match("aatest"))
+print((s2 * s3 * s4):match("test d"))
+print((s2 * s4 * s3):match("testd "))
