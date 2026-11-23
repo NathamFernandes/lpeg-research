@@ -1,4 +1,7 @@
+require "modules/helper"
+
 local lpeg = require "lpeg" -- require do módulo
+local io = require "io"
 
 print(">> P function pattern")
 
@@ -55,3 +58,13 @@ local s4 = lpeg.R("az", "AZ")
 print((s1 * s2):match("aatest"))
 print((s2 * s3 * s4):match("test d"))
 print((s2 * s4 * s3):match("testd "))
+
+print(">>> zzzz")
+
+print(">>> Pattern")
+patt = lpeg.P(io.read())
+
+print(">>> String")
+str = io.read()
+
+assert(anchored_match(patt, str) ~= nil, "OK")
